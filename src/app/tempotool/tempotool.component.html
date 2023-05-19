@@ -3,5 +3,6 @@
   <p class="text-xl text-center">
     Identify the track BPM by tapping alongside the beat
   </p>
-  <p class="text-2xl text-center border-2 w-fit">BPM: {{ tempo }}</p>
+  <button (click)="beatsPerMinute()" class="w-fit p-4 border-2">Tap</button>
+  <p class="text-2xl text-center border-2 w-fit">BPM: {{ bpmFinal }}</p>
 </div>

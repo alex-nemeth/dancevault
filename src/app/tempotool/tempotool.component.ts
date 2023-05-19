@@ -6,5 +6,33 @@ import { Component } from '@angular/core';
   styleUrls: ['./tempotool.component.css'],
 })
 export class TempotoolComponent {
-  tempo: number = 0;
+  prevTime = 0;
+  countClicks = 0;
+  currentTime = 0;
+  bpm = 0;
+  timeDifference = 0;
+  bpmTotal = 0;
+  bpmFinal = 0;
+
+  beatsPerMinute() {
+    if (this.prevTime === 0) this.prevTime = Date.now();
+    else if (Date.now() - this.prevTime > 2200) this.reset();
+    else {
+      this.currentTime = Date.now();
+      this.timeDifference = this.currentTime - this.prevTime;
+      this.prevTime = this.currentTime;
+      this.bpm = 60 / this.timeDifference;
+      this.bpmTotal = this.bpmTotal + this.bpm;
+      this.countClicks++;
+      this.bpmFinal = (this.bpmTotal / this.countClicks) * 1000;
+    }
+  }
+
+  reset() {
+    this.prevTime = 0;
+    this.bpm = 0;
+    this.bpmTotal = 0;
+    this.bpmFinal = 0;
+    this.countClicks = 0;
+  }
 }
