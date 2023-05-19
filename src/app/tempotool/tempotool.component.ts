@@ -13,6 +13,7 @@ export class TempotoolComponent {
   timeDifference = 0;
   bpmTotal = 0;
   bpmFinal = 0;
+  genres: string[] = [];
 
   beatsPerMinute() {
     if (this.prevTime === 0) this.prevTime = Date.now();
@@ -27,7 +28,18 @@ export class TempotoolComponent {
       this.bpmFinal = Number(
         ((this.bpmTotal / this.countClicks) * 1000).toFixed(1)
       );
+      this.assignGenres(this.bpmFinal);
     }
+  }
+
+  assignGenres(bpm: number) {
+    this.genres = [];
+    if (bpm >= 100 && bpm <= 160) this.genres.push('Techno');
+    if (bpm >= 160 && bpm <= 170) this.genres.push('Jungle');
+    if (bpm >= 170 && bpm <= 176) this.genres.push('Drum & Bass');
+    if (bpm >= 140 && bpm <= 150) this.genres.push('Dubstep');
+    if (bpm >= 110 && bpm <= 128) this.genres.push('House');
+    if (bpm >= 180) this.genres.push('psychopath alert!!!');
   }
 
   reset() {
@@ -36,5 +48,6 @@ export class TempotoolComponent {
     this.bpmTotal = 0;
     this.bpmFinal = 0;
     this.countClicks = 0;
+    this.genres = [];
   }
 }
