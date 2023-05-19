@@ -1,8 +1,19 @@
 <div class="p-4">
   <h1 class="text-3xl text-center mb-2">Tempotool</h1>
-  <p class="text-xl text-center">
+  <!-- <p class="text-xl text-center">
     Identify the track BPM by tapping alongside the beat
-  </p>
-  <button (click)="beatsPerMinute()" class="w-fit p-4 border-2">Tap</button>
+  </p> -->
+  <button
+    (click)="beatsPerMinute()"
+    class="w-fit p-4 border-2 active:bg-red-600 transition-all"
+  >
+    Tap
+  </button>
+  <button
+    (click)="reset()"
+    class="w-fit p-4 border-2 active:bg-red-600 transition-all"
+  >
+    Reset
+  </button>
   <p class="text-2xl text-center border-2 w-fit">BPM: {{ bpmFinal }}</p>
 </div>

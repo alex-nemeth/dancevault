@@ -24,7 +24,9 @@ export class TempotoolComponent {
       this.bpm = 60 / this.timeDifference;
       this.bpmTotal = this.bpmTotal + this.bpm;
       this.countClicks++;
-      this.bpmFinal = (this.bpmTotal / this.countClicks) * 1000;
+      this.bpmFinal = Number(
+        ((this.bpmTotal / this.countClicks) * 1000).toFixed(1)
+      );
     }
   }
 
